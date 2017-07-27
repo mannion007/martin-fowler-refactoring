@@ -45,7 +45,7 @@ class Customer
         $frequentRenterPoints = 0;
 
         /** @var array $rentals */
-        $rentals = $this->rentals;
+        $rentals = $this->getRentals();
 
         /** @var string $result */
         $result = "Rental Record for " . $this->getName() . "\n";
@@ -92,5 +92,13 @@ class Customer
                 break;
         }
         return $thisAmount;
+    }
+
+    /**
+     * @return Rental[]
+     */
+    private function getRentals()
+    {
+        return $this->rentals;
     }
 }
