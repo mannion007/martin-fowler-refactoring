@@ -2,7 +2,7 @@
 
 namespace Mannion007\MartinFowlerRefactoring;
 
-class Movie
+abstract class Movie
 {
     const CHILDRENS = 2;
     const REGULAR = 0;
@@ -29,12 +29,19 @@ class Movie
         $this->priceCode = $priceCode;
     }
 
-    /**
-     * @return string
-     */
-    public function getTitle()
+    public static function childrens($title)
     {
-        return $this->title;
+        return new ChildrensMovie($title);
+    }
+
+    public static function regular($title)
+    {
+        return new RegularMovie($title);
+    }
+
+    public static function newRelease($title)
+    {
+        return new NewReleaseMovie($title);
     }
 
     /**
@@ -46,12 +53,10 @@ class Movie
     }
 
     /**
-     * @param int $priceCode
+     * @return string
      */
-    public function setPriceCode($priceCode)
+    public function getTitle()
     {
-        $this->priceCode = $priceCode;
+        return $this->title;
     }
-
-
 }
