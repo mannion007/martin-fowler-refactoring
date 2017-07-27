@@ -6,7 +6,7 @@ class NewReleaseMovie extends Movie
 {
     public function __construct(string $title)
     {
-        parent::__construct($title, Movie::NEW_RELEASE);
+        parent::__construct($title);
     }
 
     public function getFrequentRenterPoints(int $daysRented)

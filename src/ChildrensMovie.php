@@ -6,7 +6,7 @@ class ChildrensMovie extends Movie
 {
     public function __construct(string $title)
     {
-        parent::__construct($title, Movie::CHILDRENS);
+        parent::__construct($title);
     }
 
     public function getAmount(int $daysRented)

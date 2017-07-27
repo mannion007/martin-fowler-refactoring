@@ -14,19 +14,12 @@ abstract class Movie
     private $title;
 
     /**
-     * @var int
-     */
-    private $priceCode;
-
-    /**
      * Movie constructor.
      * @param string $title
-     * @param int $priceCode
      */
-    public function __construct($title, $priceCode)
+    public function __construct($title)
     {
         $this->title = $title;
-        $this->priceCode = $priceCode;
     }
 
     public static function childrens($title)
