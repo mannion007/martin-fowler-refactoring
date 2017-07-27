@@ -59,4 +59,9 @@ abstract class Movie
     {
         return $this->title;
     }
+
+    public function getFrequentRenterPoints(int $daysRented)
+    {
+        return 1;
+    }
 }

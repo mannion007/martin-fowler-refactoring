@@ -8,4 +8,12 @@ class NewReleaseMovie extends Movie
     {
         parent::__construct($title, Movie::NEW_RELEASE);
     }
+
+    public function getFrequentRenterPoints(int $daysRented)
+    {
+        if ($daysRented > 1) {
+            return 2;
+        }
+        return 1;
+    }
 }
