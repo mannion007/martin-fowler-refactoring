@@ -46,8 +46,6 @@ class Customer
 
     public function statement()
     {
-        $frequentRenterPoints = $this->getFrequentRenterPoints();
-
         /** @var float $totalAmount */
         $totalAmount = 0;
 
@@ -61,7 +59,7 @@ class Customer
 
         //add footer lines
         $statement .= "Amount owed is " . (string)$totalAmount . "\n";
-        $statement .= "You earned " . (string)$frequentRenterPoints . " frequent renter points";
+        $statement .= "You earned " . (string)$this->getFrequentRenterPoints() . " frequent renter points";
         return $statement;
     }
 
