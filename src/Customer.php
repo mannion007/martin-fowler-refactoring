@@ -53,37 +53,14 @@ class Customer
         $statement = "Rental Record for " . $this->getName() . "\n";
 
         foreach ($this->getRentals() as $rental) {
-            $statement .= "\t" . $rental->getMovie()->getTitle() . "\t" . (string)$this->getAmountFor($rental) . "\n";
-            $totalAmount += $this->getAmountFor($rental);
+            $statement .= "\t" . $rental->getMovie()->getTitle() . "\t" . (string)$rental->getAmount() . "\n";
+            $totalAmount += $rental->getAmount();
         }
 
         //add footer lines
         $statement .= "Amount owed is " . (string)$totalAmount . "\n";
         $statement .= "You earned " . (string)$this->getFrequentRenterPoints() . " frequent renter points";
         return $statement;
-    }
-
-    private function getAmountFor(Rental $rental)
-    {
-        $thisAmount = 0;
-        switch ($rental->getMovie()->getPriceCode()) {
-            case Movie::REGULAR:
-                $thisAmount += 2;
-                if ($rental->getDaysRented() > 2) {
-                    $thisAmount += ($rental->getDaysRented() - 2) * 1.5;
-                }
-                break;
-            case Movie::NEW_RELEASE:
-                $thisAmount += $rental->getDaysRented() * 3;
-                break;
-            case Movie::CHILDRENS:
-                $thisAmount += 1.5;
-                if ($rental->getDaysRented() > 3) {
-                    $thisAmount += ($rental->getDaysRented() - 3) * 1.5;
-                }
-                break;
-        }
-        return $thisAmount;
     }
 
     private function getFrequentRenterPoints()
