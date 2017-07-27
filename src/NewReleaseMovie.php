@@ -16,4 +16,9 @@ class NewReleaseMovie extends Movie
         }
         return 1;
     }
+
+    public function getAmount(int $daysRented)
+    {
+        return $daysRented * 3;
+    }
 }

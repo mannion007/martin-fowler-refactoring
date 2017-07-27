@@ -45,20 +45,14 @@ abstract class Movie
     }
 
     /**
-     * @return int
-     */
-    public function getPriceCode()
-    {
-        return $this->priceCode;
-    }
-
-    /**
      * @return string
      */
     public function getTitle()
     {
         return $this->title;
     }
+
+    abstract public function getAmount(int $daysRented);
 
     public function getFrequentRenterPoints(int $daysRented)
     {
