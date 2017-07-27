@@ -36,6 +36,14 @@ class Customer
         $this->rentals[] = $rental;
     }
 
+    /**
+     * @return Rental[]
+     */
+    private function getRentals()
+    {
+        return $this->rentals;
+    }
+
     public function statement()
     {
         /** @var float $totalAmount */
@@ -44,25 +52,23 @@ class Customer
         /** @var int $frequentRenterPoints */
         $frequentRenterPoints = 0;
 
-        /** @var array $rentals */
-        $rentals = $this->getRentals();
-
         /** @var string $result */
         $result = "Rental Record for " . $this->getName() . "\n";
 
         /** @var Rental $rental */
-        foreach ($rentals as $rental) {
-            $thisAmount = $this->getAmountFor($rental);
-
+        foreach ($this->getRentals() as $rental) {
             // add frequent renter points
             $frequentRenterPoints++;
             // add bonus for a two day new release rental
             if (($rental->getMovie()->getPriceCode() == Movie::NEW_RELEASE) && $rental->getDaysRented() > 1) {
                 $frequentRenterPoints++;
             }
-            //show figures for this rental
+        }
+
+        foreach ($this->getRentals() as $rental) {
+            $thisAmount = $this->getAmountFor($rental);
             $result .= "\t" . $rental->getMovie()->getTitle() . "\t" . (string)$thisAmount . "\n";
-            $totalAmount += $thisAmount;
+            $totalAmount += $this->getAmountFor($rental);
         }
 
         //add footer lines
@@ -92,13 +98,5 @@ class Customer
                 break;
         }
         return $thisAmount;
-    }
-
-    /**
-     * @return Rental[]
-     */
-    private function getRentals()
-    {
-        return $this->rentals;
     }
 }
