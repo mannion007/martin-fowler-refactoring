@@ -2,7 +2,7 @@
 
 namespace Mannion007\MartinFowlerRefactoring;
 
-class ChildrensMovie extends Movie
+class ChildrensMovie extends AbstractMovie implements MovieInterface
 {
     public function __construct(string $title)
     {

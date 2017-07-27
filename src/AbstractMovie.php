@@ -2,46 +2,34 @@
 
 namespace Mannion007\MartinFowlerRefactoring;
 
-abstract class Movie
+abstract class AbstractMovie
 {
-    /**
-     * @var string
-     */
     private $title;
 
-    /**
-     * Movie constructor.
-     * @param string $title
-     */
     public function __construct($title)
     {
         $this->title = $title;
     }
 
-    public static function childrens($title)
+    public static function createChildrens($title)
     {
         return new ChildrensMovie($title);
     }
 
-    public static function regular($title)
+    public static function createRegular($title)
     {
         return new RegularMovie($title);
     }
 
-    public static function newRelease($title)
+    public static function createNewRelease($title)
     {
         return new NewReleaseMovie($title);
     }
 
-    /**
-     * @return string
-     */
     public function getTitle()
     {
         return $this->title;
     }
-
-    abstract public function getAmount(int $daysRented);
 
     public function getFrequentRenterPoints(int $daysRented)
     {
