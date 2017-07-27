@@ -1,0 +1,18 @@
+{
+    "name": "mannion007/martin-fowler-refactoring",
+    "type": "project",
+    "require-dev": {
+        "phpunit/phpunit": "^6.2"
+    },
+    "authors": [
+        {
+            "name": "James Mannion",
+            "email": "mannion007@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Mannion007\\MartinFowlerRefactoring\\": "src"
+        }
+    }
+}
