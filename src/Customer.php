@@ -46,21 +46,10 @@ class Customer
 
     public function statement()
     {
+        $frequentRenterPoints = $this->getFrequentRenterPoints();
+
         /** @var float $totalAmount */
         $totalAmount = 0;
-
-        /** @var int $frequentRenterPoints */
-        $frequentRenterPoints = 0;
-
-        /** @var Rental $rental */
-        foreach ($this->getRentals() as $rental) {
-            // add frequent renter points
-            $frequentRenterPoints++;
-            // add bonus for a two day new release rental
-            if (($rental->getMovie()->getPriceCode() == Movie::NEW_RELEASE) && $rental->getDaysRented() > 1) {
-                $frequentRenterPoints++;
-            }
-        }
 
         /** @var string $statement */
         $statement = "Rental Record for " . $this->getName() . "\n";
@@ -97,5 +86,23 @@ class Customer
                 break;
         }
         return $thisAmount;
+    }
+
+
+    private function getFrequentRenterPoints()
+    {
+        /** @var int $frequentRenterPoints */
+        $frequentRenterPoints = 0;
+
+        /** @var Rental $rental */
+        foreach ($this->getRentals() as $rental) {
+            // add frequent renter points
+            $frequentRenterPoints++;
+            // add bonus for a two day new release rental
+            if (($rental->getMovie()->getPriceCode() == Movie::NEW_RELEASE) && $rental->getDaysRented() > 1) {
+                $frequentRenterPoints++;
+            }
+        }
+        return $frequentRenterPoints;
     }
 }
