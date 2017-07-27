@@ -4,10 +4,6 @@ namespace Mannion007\MartinFowlerRefactoring;
 
 abstract class Movie
 {
-    const CHILDRENS = 2;
-    const REGULAR = 0;
-    const NEW_RELEASE = 1;
-
     /**
      * @var string
      */
