@@ -52,9 +52,6 @@ class Customer
         /** @var int $frequentRenterPoints */
         $frequentRenterPoints = 0;
 
-        /** @var string $statement */
-        $statement = "Rental Record for " . $this->getName() . "\n";
-
         /** @var Rental $rental */
         foreach ($this->getRentals() as $rental) {
             // add frequent renter points
@@ -65,9 +62,11 @@ class Customer
             }
         }
 
+        /** @var string $statement */
+        $statement = "Rental Record for " . $this->getName() . "\n";
+
         foreach ($this->getRentals() as $rental) {
-            $thisAmount = $this->getAmountFor($rental);
-            $statement .= "\t" . $rental->getMovie()->getTitle() . "\t" . (string)$thisAmount . "\n";
+            $statement .= "\t" . $rental->getMovie()->getTitle() . "\t" . (string)$this->getAmountFor($rental) . "\n";
             $totalAmount += $this->getAmountFor($rental);
         }
 
