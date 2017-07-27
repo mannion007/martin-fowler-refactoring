@@ -11,21 +11,6 @@ abstract class AbstractMovie
         $this->title = $title;
     }
 
-    public static function createChildrens($title)
-    {
-        return new ChildrensMovie($title);
-    }
-
-    public static function createRegular($title)
-    {
-        return new RegularMovie($title);
-    }
-
-    public static function createNewRelease($title)
-    {
-        return new NewReleaseMovie($title);
-    }
-
     public function getTitle()
     {
         return $this->title;
