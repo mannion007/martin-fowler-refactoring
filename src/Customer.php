@@ -50,18 +50,18 @@ class Customer
         /** @var string $result */
         $result = "Rental Record for " . $this->getName() . "\n";
 
-        /** @var Rental $item */
-        foreach ($rentals as $item) {
-            $thisAmount = $this->getAmountFor($item);
+        /** @var Rental $rental */
+        foreach ($rentals as $rental) {
+            $thisAmount = $this->getAmountFor($rental);
 
             // add frequent renter points
             $frequentRenterPoints++;
             // add bonus for a two day new release rental
-            if (($item->getMovie()->getPriceCode() == Movie::NEW_RELEASE) && $item->getDaysRented() > 1) {
+            if (($rental->getMovie()->getPriceCode() == Movie::NEW_RELEASE) && $rental->getDaysRented() > 1) {
                 $frequentRenterPoints++;
             }
             //show figures for this rental
-            $result .= "\t" . $item->getMovie()->getTitle() . "\t" . (string)$thisAmount . "\n";
+            $result .= "\t" . $rental->getMovie()->getTitle() . "\t" . (string)$thisAmount . "\n";
             $totalAmount += $thisAmount;
         }
 
@@ -71,23 +71,23 @@ class Customer
         return $result;
     }
 
-    private function getAmountFor(Rental $item)
+    private function getAmountFor(Rental $rental)
     {
         $thisAmount = 0;
-        switch ($item->getMovie()->getPriceCode()) {
+        switch ($rental->getMovie()->getPriceCode()) {
             case Movie::REGULAR:
                 $thisAmount += 2;
-                if ($item->getDaysRented() > 2) {
-                    $thisAmount += ($item->getDaysRented() - 2) * 1.5;
+                if ($rental->getDaysRented() > 2) {
+                    $thisAmount += ($rental->getDaysRented() - 2) * 1.5;
                 }
                 break;
             case Movie::NEW_RELEASE:
-                $thisAmount += $item->getDaysRented() * 3;
+                $thisAmount += $rental->getDaysRented() * 3;
                 break;
             case Movie::CHILDRENS:
                 $thisAmount += 1.5;
-                if ($item->getDaysRented() > 3) {
-                    $thisAmount += ($item->getDaysRented() - 3) * 1.5;
+                if ($rental->getDaysRented() > 3) {
+                    $thisAmount += ($rental->getDaysRented() - 3) * 1.5;
                 }
                 break;
         }
