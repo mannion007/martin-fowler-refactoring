@@ -52,8 +52,8 @@ class Customer
         /** @var int $frequentRenterPoints */
         $frequentRenterPoints = 0;
 
-        /** @var string $result */
-        $result = "Rental Record for " . $this->getName() . "\n";
+        /** @var string $statement */
+        $statement = "Rental Record for " . $this->getName() . "\n";
 
         /** @var Rental $rental */
         foreach ($this->getRentals() as $rental) {
@@ -67,14 +67,14 @@ class Customer
 
         foreach ($this->getRentals() as $rental) {
             $thisAmount = $this->getAmountFor($rental);
-            $result .= "\t" . $rental->getMovie()->getTitle() . "\t" . (string)$thisAmount . "\n";
+            $statement .= "\t" . $rental->getMovie()->getTitle() . "\t" . (string)$thisAmount . "\n";
             $totalAmount += $this->getAmountFor($rental);
         }
 
         //add footer lines
-        $result .= "Amount owed is " . (string)$totalAmount . "\n";
-        $result .= "You earned " . (string)$frequentRenterPoints . " frequent renter points";
-        return $result;
+        $statement .= "Amount owed is " . (string)$totalAmount . "\n";
+        $statement .= "You earned " . (string)$frequentRenterPoints . " frequent renter points";
+        return $statement;
     }
 
     private function getAmountFor(Rental $rental)
