@@ -16,7 +16,7 @@ class PlainTextStatementProducer implements StatementProducerInterface
             $statement .= "\t" . $rental->getMovie()->getTitle() . "\t" . (string)$rental->getAmount() . "\n";
         }
 
-        $statement .= "Amount owed is " . (string)$customer->getTotalAmount() . "\n";
+        $statement .= "Amount owed is " . (string)$customer->getAmountOwed() . "\n";
         $statement .= "You earned " . (string)$customer->getTotalFrequentRenterPoints() . " frequent renter points";
         return $statement;
     }

@@ -39,7 +39,7 @@ class Customer
         return $frequentRenterPoints;
     }
 
-    public function getTotalAmount() : float
+    public function getAmountOwed() : float
     {
         $totalAmount = 0;
         /** @var Rental $rental */
