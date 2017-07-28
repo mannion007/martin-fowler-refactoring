@@ -27,7 +27,7 @@ class Rental
 
     public function getFrequentRenterPoints() : int
     {
-        return $this->movie->getFrequentRenterPoints($this->daysRented);
+        return $this->movie->getFrequentRenterPointsForRentalLasting($this->daysRented);
     }
 
     public function getAmount() : float

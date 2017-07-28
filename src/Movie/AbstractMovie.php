@@ -16,7 +16,7 @@ abstract class AbstractMovie
         return $this->title;
     }
 
-    public function getFrequentRenterPoints(int $daysRented) : int
+    public function getFrequentRenterPointsForRentalLasting(int $daysRented) : int
     {
         return 1;
     }

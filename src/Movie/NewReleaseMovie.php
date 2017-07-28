@@ -9,7 +9,7 @@ class NewReleaseMovie extends AbstractMovie implements MovieInterface
         parent::__construct($title);
     }
 
-    public function getFrequentRenterPoints(int $daysRented) : int
+    public function getFrequentRenterPointsForRentalLasting(int $daysRented) : int
     {
         if ($daysRented > 1) {
             return 2;
