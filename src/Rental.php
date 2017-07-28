@@ -32,6 +32,6 @@ class Rental
 
     public function getAmount() : float
     {
-        return $this->movie->getAmount($this->daysRented);
+        return $this->movie->getAmountForRentalLasting($this->daysRented);
     }
 }

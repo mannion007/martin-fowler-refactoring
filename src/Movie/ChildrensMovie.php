@@ -9,7 +9,7 @@ class ChildrensMovie extends AbstractMovie implements MovieInterface
         parent::__construct($title);
     }
 
-    public function getAmount(int $daysRented) : float
+    public function getAmountForRentalLasting(int $daysRented) : float
     {
         $amount = 1.5;
         if ($daysRented > 3) {

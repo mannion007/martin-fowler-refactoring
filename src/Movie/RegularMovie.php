@@ -9,7 +9,7 @@ class RegularMovie extends AbstractMovie implements MovieInterface
         parent::__construct($title);
     }
 
-    public function getAmount(int $daysRented) : float
+    public function getAmountForRentalLasting(int $daysRented) : float
     {
         $amount = 2;
         if ($daysRented > 2) {

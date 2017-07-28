@@ -17,7 +17,7 @@ class NewReleaseMovie extends AbstractMovie implements MovieInterface
         return 1;
     }
 
-    public function getAmount(int $daysRented) : float
+    public function getAmountForRentalLasting(int $daysRented) : float
     {
         return $daysRented * 3;
     }
