@@ -7,7 +7,7 @@ use Mannion007\MartinFowlerRefactoring\Rental;
 
 class PlainTextStatementProducer implements StatementProducerInterface
 {
-    public function generateFor(Customer $customer) : string
+    public function produceFor(Customer $customer) : string
     {
         $statement = "Rental Record for " . $customer->getName() . "\n";
 

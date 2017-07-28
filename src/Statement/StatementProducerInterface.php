@@ -6,5 +6,5 @@ use Mannion007\MartinFowlerRefactoring\Customer;
 
 interface StatementProducerInterface
 {
-    public function generateFor(Customer $customer);
+    public function produceFor(Customer $customer);
 }
