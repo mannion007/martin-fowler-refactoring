@@ -49,7 +49,7 @@ class Customer
         return $totalAmount;
     }
 
-    public function statement(StatementProducerInterface $statementProducer) : string
+    public function produceStatement(StatementProducerInterface $statementProducer) : string
     {
         return $statementProducer->produceFor($this);
     }
