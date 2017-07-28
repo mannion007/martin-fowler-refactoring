@@ -2,6 +2,8 @@
 
 namespace Mannion007\MartinFowlerRefactoring;
 
+use Mannion007\MartinFowlerRefactoring\Statement\StatementProducerInterface;
+
 class Customer
 {
     private $name;
@@ -12,22 +14,22 @@ class Customer
         $this->name = $name;
     }
 
-    public function getName()
+    public function getName() : string
     {
         return $this->name;
     }
 
-    public function addRental(Rental $rental)
+    public function addRental(Rental $rental) : void
     {
         $this->rentals[] = $rental;
     }
 
-    public function getRentals()
+    public function getRentals() : array
     {
         return $this->rentals;
     }
 
-    public function getTotalFrequentRenterPoints()
+    public function getTotalFrequentRenterPoints() : int
     {
         $frequentRenterPoints = 0;
         /** @var Rental $rental */
@@ -37,7 +39,7 @@ class Customer
         return $frequentRenterPoints;
     }
 
-    public function getTotalAmount()
+    public function getTotalAmount() : float
     {
         $totalAmount = 0;
         /** @var Rental $rental */
@@ -47,7 +49,7 @@ class Customer
         return $totalAmount;
     }
 
-    public function statement(StatementGeneratorInterface $statementGenerator)
+    public function statement(StatementProducerInterface $statementGenerator) : string
     {
         return $statementGenerator->generateFor($this);
     }

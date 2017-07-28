@@ -1,6 +1,6 @@
 <?php
 
-namespace Mannion007\MartinFowlerRefactoring;
+namespace Mannion007\MartinFowlerRefactoring\Movie;
 
 class NewReleaseMovie extends AbstractMovie implements MovieInterface
 {
@@ -9,7 +9,7 @@ class NewReleaseMovie extends AbstractMovie implements MovieInterface
         parent::__construct($title);
     }
 
-    public function getFrequentRenterPoints(int $daysRented)
+    public function getFrequentRenterPoints(int $daysRented) : int
     {
         if ($daysRented > 1) {
             return 2;
@@ -17,7 +17,7 @@ class NewReleaseMovie extends AbstractMovie implements MovieInterface
         return 1;
     }
 
-    public function getAmount(int $daysRented)
+    public function getAmount(int $daysRented) : float
     {
         return $daysRented * 3;
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Mannion007\MartinFowlerRefactoring;
+namespace Mannion007\MartinFowlerRefactoring\Movie;
 
 abstract class AbstractMovie
 {
@@ -11,12 +11,12 @@ abstract class AbstractMovie
         $this->title = $title;
     }
 
-    public function getTitle()
+    public function getTitle() : string
     {
         return $this->title;
     }
 
-    public function getFrequentRenterPoints(int $daysRented)
+    public function getFrequentRenterPoints(int $daysRented) : int
     {
         return 1;
     }

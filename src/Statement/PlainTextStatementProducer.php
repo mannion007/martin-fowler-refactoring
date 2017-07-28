@@ -1,10 +1,13 @@
 <?php
 
-namespace Mannion007\MartinFowlerRefactoring;
+namespace Mannion007\MartinFowlerRefactoring\Statement;
 
-class PlainTextStatementGenerator implements StatementGeneratorInterface
+use Mannion007\MartinFowlerRefactoring\Customer;
+use Mannion007\MartinFowlerRefactoring\Rental;
+
+class PlainTextStatementProducer implements StatementProducerInterface
 {
-    public function generateFor(Customer $customer)
+    public function generateFor(Customer $customer) : string
     {
         $statement = "Rental Record for " . $customer->getName() . "\n";
 
