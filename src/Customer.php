@@ -22,12 +22,12 @@ class Customer
         $this->rentals[] = $rental;
     }
 
-    private function getRentals()
+    public function getRentals()
     {
         return $this->rentals;
     }
 
-    private function getTotalFrequentRenterPoints()
+    public function getTotalFrequentRenterPoints()
     {
         $frequentRenterPoints = 0;
         /** @var Rental $rental */
@@ -37,7 +37,7 @@ class Customer
         return $frequentRenterPoints;
     }
 
-    private function getTotalAmount()
+    public function getTotalAmount()
     {
         $totalAmount = 0;
         /** @var Rental $rental */
@@ -47,17 +47,8 @@ class Customer
         return $totalAmount;
     }
 
-    public function statement()
+    public function statement(StatementGeneratorInterface $statementGenerator)
     {
-        $statement = "Rental Record for " . $this->getName() . "\n";
-
-        /** @var Rental $rental */
-        foreach ($this->getRentals() as $rental) {
-            $statement .= "\t" . $rental->getMovie()->getTitle() . "\t" . (string)$rental->getAmount() . "\n";
-        }
-
-        $statement .= "Amount owed is " . (string)$this->getTotalAmount() . "\n";
-        $statement .= "You earned " . (string)$this->getTotalFrequentRenterPoints() . " frequent renter points";
-        return $statement;
+        return $statementGenerator->generateFor($this);
     }
 }
